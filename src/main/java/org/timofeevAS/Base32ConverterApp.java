@@ -5,6 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 public class Base32ConverterApp extends JFrame {
     private JButton chooseFileButton;
@@ -104,15 +105,16 @@ public class Base32ConverterApp extends JFrame {
     private void encodeFileInBackground() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected Void doInBackground() {
                 try {
                     FileTransformBase32.encodeFileToBase32(selectedFile);
                     selectedFileLabel.setText(selectedFile.getName() + " successfully encoded");
-                } catch (Exception ex) {
+                } catch (IOException | IllegalArgumentException ex) {
                     selectedFileLabel.setText(selectedFile.getName() + " (Error encoding file)");
                     showErrorDialog(ex.getMessage());
                     ex.printStackTrace();
-                } finally {
+                }
+                finally {
                     setButtonsEnabled(true);
                 }
                 return null;
@@ -140,15 +142,16 @@ public class Base32ConverterApp extends JFrame {
     private void decodeFileInBackground() {
         SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
             @Override
-            protected Void doInBackground() throws Exception {
+            protected Void doInBackground() {
                 try {
                     FileTransformBase32.decodeFileFromBase32(selectedFile);
                     selectedFileLabel.setText(selectedFile.getName() + " successfully decoded");
-                } catch (Exception ex) {
-                    selectedFileLabel.setText(selectedFile.getName() + " (Error decoding file)");
+                } catch (IOException | IllegalArgumentException ex) {
+                    selectedFileLabel.setText(selectedFile.getName() + " (Error encoding file)");
                     showErrorDialog(ex.getMessage());
                     ex.printStackTrace();
-                } finally {
+                }
+                finally {
                     setButtonsEnabled(true);
                 }
                 return null;
