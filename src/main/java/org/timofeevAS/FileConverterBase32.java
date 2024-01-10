@@ -96,4 +96,36 @@ public class FileConverterBase32 {
             }
         }
     }
+
+    public static void main(String[] args) {
+
+        // Usages main method to decode or encode File
+        if (args.length != 2) {
+            System.out.println("Usage: java FileTransformBase32 <decode|encode> <FilePath>");
+            System.exit(1);
+        }
+
+        String operation = args[0].toLowerCase();
+        String filePath = args[1];
+
+        File inputFile = new File(filePath);
+
+        try {
+            switch (operation) {
+                case "encode":
+                    encodeFileToBase32(inputFile);
+                    System.out.println("File encoded successfully.");
+                    break;
+                case "decode":
+                    decodeFileFromBase32(inputFile);
+                    System.out.println("File decoded successfully.");
+                    break;
+                default:
+                    System.out.println("Invalid operation. Use 'decode' or 'encode'.");
+                    break;
+            }
+        } catch (IOException | IllegalArgumentException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

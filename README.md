@@ -39,7 +39,8 @@ Project has simple GUI for user _(Implements with Swing)_:
 2. Build project in executable-jar:
    ```bash
    mvn package
-   mvn clean compile assembly:single
+   mvn clean compile assembly:single -Pswing
+   mvn compile assembly:single -Pwidget
    ```
    
 3. Get *.jar executable application in `./target` folder
@@ -47,4 +48,11 @@ Project has simple GUI for user _(Implements with Swing)_:
 #### Usage
 1. Choose file and push `Encode` or `Decode`
 2. Encoded file creates next to chosen file with pseudo-extension `*.b32`
+
+
+#### Extras
+1. You can build widget.jar file, which can run from terminal:
+```bash
+   java -jar <path_to_widget_jar> <decode|encode> FilePath
+```
 
