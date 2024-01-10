@@ -34,7 +34,7 @@ Project has simple GUI for user _(Implements with Swing)_:
 1. Clone the repository:
    ```bash
    git clone https://github.com/timofeevAS/Base32-converter
-   cd FileTransformBase32
+   cd Base32-converter
    ```
 2. Build project in executable-jar:
    ```bash
