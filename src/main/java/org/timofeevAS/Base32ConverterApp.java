@@ -107,7 +107,7 @@ public class Base32ConverterApp extends JFrame {
             @Override
             protected Void doInBackground() {
                 try {
-                    FileTransformBase32.encodeFileToBase32(selectedFile);
+                    FileConverterBase32.encodeFileToBase32(selectedFile);
                     selectedFileLabel.setText(selectedFile.getName() + " successfully encoded");
                 } catch (IOException | IllegalArgumentException ex) {
                     selectedFileLabel.setText(selectedFile.getName() + " (Error encoding file)");
@@ -144,7 +144,7 @@ public class Base32ConverterApp extends JFrame {
             @Override
             protected Void doInBackground() {
                 try {
-                    FileTransformBase32.decodeFileFromBase32(selectedFile);
+                    FileConverterBase32.decodeFileFromBase32(selectedFile);
                     selectedFileLabel.setText(selectedFile.getName() + " successfully decoded");
                 } catch (IOException | IllegalArgumentException ex) {
                     selectedFileLabel.setText(selectedFile.getName() + " (Error encoding file)");
